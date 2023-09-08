@@ -39,8 +39,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         // work-runtime-ktx 2.1.0 and above now requires Java 8
@@ -91,6 +91,7 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.androidx.profileinstaller)
     implementation(libs.androidx.tracing.ktx)
+    implementation(libs.landscapist.coil)
 
     // Compose
     implementation(platform(libs.androidx.compose.bom))
@@ -126,6 +127,4 @@ dependencies {
     androidTestImplementation(libs.accessibility.test.framework)
     androidTestImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
-
-    implementation("com.github.skydoves:landscapist-coil:2.1.0")
 }
