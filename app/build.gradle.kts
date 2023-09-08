@@ -126,4 +126,6 @@ dependencies {
     androidTestImplementation(libs.accessibility.test.framework)
     androidTestImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
+
+    implementation("com.github.skydoves:landscapist-coil:2.1.0")
 }
