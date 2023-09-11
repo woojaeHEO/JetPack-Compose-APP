@@ -36,7 +36,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpack_compose_app.base.BaseActivity
 import com.example.jetpack_compose_app.di.CategoryItem
+import com.example.jetpack_compose_app.di.VideoItem
 import com.example.jetpack_compose_app.screen.main.components.CategoryButton
+import com.example.jetpack_compose_app.screen.main.components.VideoRow
 import com.example.jetpack_compose_app.ui.theme.Gray2D2D2D
 import com.example.jetpack_compose_app.ui.theme.GrayBCBCBC
 import com.example.jetpack_compose_app.ui.theme.GrayF0F0F0
@@ -102,7 +104,7 @@ fun MainScreen(context: Context) {
                     focusManager.clearFocus()
 
                     // show toast
-                    Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, field.toString(), Toast.LENGTH_SHORT).show()
                 }
             ),
             singleLine = true,
@@ -123,12 +125,14 @@ fun MainScreen(context: Context) {
             horizontalArrangement = Arrangement.spacedBy(20.dp)
         ) {
 
+            // PokeDex
             CategoryButton(
                 modifier = Modifier.weight(1f),
                 categoryState = CategoryItem.pokedex,
                 onClick = {}
             )
 
+            // Moves
             CategoryButton(
                 modifier = Modifier.weight(1f),
                 categoryState = CategoryItem.moves,
@@ -141,12 +145,14 @@ fun MainScreen(context: Context) {
             horizontalArrangement = Arrangement.spacedBy(20.dp)
         ) {
 
+            // Evolutions
             CategoryButton(
                 modifier = Modifier.weight(1f),
                 categoryState = CategoryItem.evolutions,
                 onClick = {}
             )
 
+            // Locations
             CategoryButton(
                 modifier = Modifier.weight(1f),
                 categoryState = CategoryItem.locations,
@@ -170,6 +176,20 @@ fun MainScreen(context: Context) {
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp),
             color = GrayBCBCBC
+        )
+
+        VideoRow(
+            modifier = Modifier
+                .fillMaxWidth(),
+            videoList = VideoItem.demoList,
+            onVideoClick = { index, video ->
+
+                Toast.makeText(context, "${index + 1}th video click", Toast.LENGTH_SHORT).show()
+            },
+            onClick = { index, video ->
+
+                Toast.makeText(context, "${index + 1}th item click", Toast.LENGTH_SHORT).show()
+            }
         )
     }
 }
