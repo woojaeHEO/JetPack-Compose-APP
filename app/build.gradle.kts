@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -67,6 +67,10 @@ android {
 
 dependencies {
 
+    implementation(project(path = ":core-model"))
+    implementation(project(path = ":core-data"))
+    implementation(project(path = ":core-database"))
+
     kapt(libs.androidx.room.compiler)
     kapt(libs.hilt.android.compiler)
     implementation(libs.material3)
@@ -96,6 +100,7 @@ dependencies {
     // Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.accompanist.themeadapter.material)
+    implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.compose.runtime)
