@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.my.core-database"
+    namespace = "com.my.core_database"
     compileSdk = 33
 
     defaultConfig {
@@ -31,6 +31,8 @@ dependencies {
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    testImplementation("junit:junit:4.12")
+    androidTestImplementation("junit:junit:4.12")
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.moshi)

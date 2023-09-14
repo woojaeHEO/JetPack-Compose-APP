@@ -35,13 +35,13 @@ class ListViewModel @Inject constructor(
             page = page,
             onStart = { _isLoading.value = true },
             onComplete = { _isLoading.value = false },
-            onError = {  }
+            onError = { }
         )
     }
 
     @MainThread
     fun fetchNextPokemonList() {
-        if ( !isLoading.value ) {
+        if (!isLoading.value) {
             pokemonFetchingIndex.value++
         }
     }

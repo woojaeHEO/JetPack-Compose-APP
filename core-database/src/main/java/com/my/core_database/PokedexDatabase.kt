@@ -1,10 +1,10 @@
-package com.my.core-database
+package com.my.core_database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.my.core-database.entity.PokemonEntity
-import com.my.core-database.entity.PokemonInfoEntity
+import com.my.core_database.entity.PokemonEntity
+import com.my.core_database.entity.PokemonInfoEntity
 
 @Database(
     entities = [PokemonEntity::class, PokemonInfoEntity::class],

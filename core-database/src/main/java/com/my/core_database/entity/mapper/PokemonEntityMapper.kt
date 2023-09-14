@@ -1,6 +1,6 @@
-package com.my.core-database.entity.mapper
+package com.my.core_database.entity.mapper
 
-import com.my.core-database.entity.PokemonEntity
+import com.my.core_database.entity.PokemonEntity
 import com.my.core_model.Pokemon
 
 object PokemonEntityMapper: EntityMapper<List<Pokemon>, List<PokemonEntity>> {

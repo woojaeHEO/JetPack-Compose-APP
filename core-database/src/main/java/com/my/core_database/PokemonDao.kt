@@ -1,10 +1,10 @@
-package com.my.core-database
+package com.my.core_database
 
+import com.my.core_database.entity.PokemonEntity
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.my.core-database.entity.PokemonEntity
 
 @Dao
 interface PokemonDao {

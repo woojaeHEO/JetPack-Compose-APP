@@ -1,4 +1,4 @@
-package com.my.core-database
+package com.my.core_database
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter

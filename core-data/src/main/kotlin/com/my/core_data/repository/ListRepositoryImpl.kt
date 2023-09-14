@@ -1,9 +1,9 @@
 package com.my.core_data.repository
 
 import androidx.annotation.WorkerThread
-import com.my.core.PokemonDao
-import com.my.core.asDomain
-import com.my.core.asEntity
+import com.my.core_database.PokemonDao
+import com.my.core_database.entity.mapper.asDomain
+import com.my.core_database.entity.mapper.asEntity
 import com.my.core_network.Dispatcher
 import com.my.core_network.PokedexAppDispatchers
 import com.my.core_network.service.PokedexClient
