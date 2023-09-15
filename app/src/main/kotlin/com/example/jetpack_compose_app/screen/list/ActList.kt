@@ -1,6 +1,7 @@
 package com.example.jetpack_compose_app.screen.list
 
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.core.view.WindowCompat
 import com.example.jetpack_compose_app.base.BaseActivity

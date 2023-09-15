@@ -1,5 +1,6 @@
 package com.my.core_data.repository
 
+import android.util.Log
 import androidx.annotation.WorkerThread
 import com.my.core_database.PokemonDao
 import com.my.core_database.entity.mapper.asDomain
@@ -30,10 +31,12 @@ class ListRepositoryImpl @Inject constructor(
   ) = flow {
 
     var pokemons = pokemonDao.getPokemonList(page).asDomain()
+    Log.d(">>>", "fetchPokemonList: ${pokemons.size}")
     if ( pokemons.isEmpty() ) {
 
       val response = pokedexClient.fetchPokemonList(page = page)
       response.suspendOnSuccess {
+        Log.d(">>>", "fetchPokemonList: ${data.results.size}")
         pokemons = data.results
         pokemons.forEach { pokemon -> pokemon.page = page }
         pokemonDao.insertPokemonList(pokemons.asEntity())

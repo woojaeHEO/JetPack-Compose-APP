@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_app.screen.list
 
+import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.material.MaterialTheme
@@ -17,8 +18,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.jetpack_compose_app.screen.list.pokemonList.PokemonDetail
 import com.example.jetpack_compose_app.screen.list.pokemonList.PokemonList
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import java.io.UnsupportedEncodingException
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Preview
 @Composable
@@ -50,6 +55,13 @@ fun PokemonListScreen() {
                 viewModel = hiltViewModel(),
                 selectPokemon = {
 
+                    val encodedUrl = try {
+                        URLEncoder.encode(it.getImageUrl(), StandardCharsets.UTF_8.toString())
+                    } catch (e: UnsupportedEncodingException) {
+                        ""
+                    }
+
+                    navController.navigate("${NavScreen.Details.route}/${it.name}/${encodedUrl}")
                 }
             )
 
@@ -60,13 +72,19 @@ fun PokemonListScreen() {
         }
 
         composable(
-            route = NavScreen.PosterDetails.routeWithArgument,
+            route = NavScreen.Details.routeWithArgument,
             arguments = listOf(
-                navArgument(NavScreen.PosterDetails.argument0) { type = NavType.LongType }
+                navArgument(NavScreen.Details.argument0) { type = NavType.StringType }
             )
         ) { backStackEntry ->
 
-            val name = backStackEntry.arguments?.getLong(NavScreen.PosterDetails.argument0) ?: return@composable
+            Log.i("gustn", "PokemonListScreen: backStackEntry")
+            val name = backStackEntry.arguments?.getString(NavScreen.Details.argument0) ?: return@composable
+            val imageUrl = backStackEntry.arguments?.getString(NavScreen.Details.argument1) ?: return@composable
+
+            PokemonDetail(name, imageUrl, viewModel = hiltViewModel()) {
+                navController.navigateUp()
+            }
 
             LaunchedEffect(Unit) {
                 statusBarColor = Color.Transparent
@@ -86,9 +104,10 @@ sealed class NavScreen(val route: String) {
 
     object Home: NavScreen("Home")
 
-    object PosterDetails: NavScreen("Details") {
+    object Details: NavScreen("Details") {
 
-        const val routeWithArgument: String = "Details/{Name}"
+        const val routeWithArgument: String = "Details/{Name}/{ImageUrl}"
         const val argument0: String = "Name"
+        const val argument1: String = "ImageUrl"
     }
 }

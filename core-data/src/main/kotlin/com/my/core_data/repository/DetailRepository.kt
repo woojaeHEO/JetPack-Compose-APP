@@ -1,16 +1,15 @@
 package com.my.core_data.repository
 
 import androidx.annotation.WorkerThread
-import com.my.core_model.Pokemon
+import com.my.core_model.PokemonInfo
 import kotlinx.coroutines.flow.Flow
 
-interface ListRepository {
+interface DetailRepository {
 
     @WorkerThread
-    fun fetchPokemonList(
-        page: Int,
-        onStart: () -> Unit,
+    fun fetchPokemonInfo(
+        name: String,
         onComplete: () -> Unit,
         onError: (String?) -> Unit
-    ): Flow<List<Pokemon>>
+    ): Flow<PokemonInfo>
 }
