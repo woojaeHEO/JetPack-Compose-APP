@@ -37,6 +37,8 @@ fun PokemonList(
     val selectedTab = NavigationTab.getTab(viewModel.selectedTab.value)
     val tabs = NavigationTab.values()
 
+
+
     ConstraintLayout {
         val (body, progress) = createRefs()
         Scaffold(
@@ -66,9 +68,9 @@ fun PokemonList(
             val modifier = Modifier.padding(innerPadding)
             Crossfade( selectedTab, label = "") { destination ->
                 when ( destination ) {
-                    NavigationTab.HOME -> HomePokemonList(modifier, pokemonList, selectPokemon)
-                    NavigationTab.LIST -> HomePokemonList(modifier, pokemonList, selectPokemon)
-                    NavigationTab.FAVORITE -> HomePokemonList(modifier, pokemonList, selectPokemon)
+                    NavigationTab.HOME -> HomePokemonList(modifier, pokemonList, selectPokemon) { viewModel.fetchNextPokemonList() }
+                    NavigationTab.LIST -> HomePokemonList(modifier, pokemonList, selectPokemon) { viewModel.fetchNextPokemonList() }
+                    NavigationTab.FAVORITE -> HomePokemonList(modifier, pokemonList, selectPokemon) { viewModel.fetchNextPokemonList() }
                 }
             }
         }

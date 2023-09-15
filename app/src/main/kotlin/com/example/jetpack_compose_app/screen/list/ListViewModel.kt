@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_app.screen.list
 
+import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.StringRes
 import androidx.compose.runtime.MutableState
